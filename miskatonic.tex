@@ -1,0 +1,133 @@
+\documentclass[9pt]{extbook}
+
+%
+% setup all the packages I'm using
+%
+\usepackage[english]{babel}
+\usepackage{blindtext}
+\usepackage{fancyhdr}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[utf8]{inputenc}
+\usepackage{multicol}
+%\usepackage[document]{ragged2e}
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+%
+% Then setup all the document parameters
+%
+\geometry{a4paper}
+
+%
+% make the colours required for the document
+%
+\definecolor{headingColour}{HTML}{72000D}
+\definecolor{highlightTextColour}{HTML}{452E0F}
+\definecolor{highlightBackgroundColour}{HTML}{EEECE1}
+
+\defaultfontfeatures{Ligatures=TeX}
+\setsansfont{Aller}
+\setmainfont{Libre Baskerville}
+
+\titleformat{\chapter}%
+    {\fontsize{24pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\MakeUppercase}%
+    {\thechapter}%
+    {0em}%
+    {}
+\titleformat{\section}%
+    {\fontsize{14pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\MakeUppercase}%
+    {\thesection}%
+    {0pt}%
+    {}
+\titleformat{\subsection}%
+    {\fontsize{11pt}{0pt}\selectfont\bfseries\color{headingColour}}%
+    {\thesubsection}%
+    {0pt}%
+    {}
+\titleformat{\subsubsection}%
+    {\normalsize\bfseries\slshape\color{headingColour}}%
+    {\thesubsubsection}%
+    {0pt}%
+    {}
+
+\setcounter{tocdepth}{2}
+
+%
+% Document details
+%
+\title{Dummy book}
+\author{Henry Walshaw}
+% \thanks{}
+% \date{} % delete this line to display the current date
+
+
+%
+% Copyright page
+%
+\def\secondpage{\clearpage\null\vfill
+\pagestyle{empty}
+\begin{minipage}[b]{0.9\textwidth}
+\begin{center}
+\setlength{\parskip}{0.5\baselineskip}
+\emph{Call of Cthulhu} is a Trademark of Chaosium Inc. and is used with their permission via the OBS Community Content program. For more information please visit Chaosium's website: \href{https://www.chaosium.com}{www.chaosium.com}
+
+The \emph{Miskatonic Repository Logo} is used under license.
+
+\emph{\thetitle} \copyright \the\year\ \theauthor. All rights reserved.
+
+\end{center}
+\end{minipage}
+%\vspace*{2\baselineskip}
+\cleardoublepage
+\rfoot{\thepage}}
+
+\makeatletter
+\g@addto@macro{\maketitle}{\secondpage}
+\makeatother
+
+%
+% Set up page headers
+% 
+
+\fancyhead{}
+\fancyhead[LE,RO]{\thetitle}
+\fancyhead[RE,LO]{}
+\fancyfoot{}
+\fancyfoot[LE,RO]{}
+\fancyfoot[RE,LO]{}
+
+
+
+%%% BEGIN DOCUMENT
+\begin{document}
+
+\frontmatter
+
+\begin{titlepage}
+\maketitle
+\end{titlepage}
+
+
+\pagestyle{fancy}
+
+\begin{multicols*}{2}
+\tableofcontents
+
+\mainmatter
+\addcontentsline{toc}{chapter}{Test chapter}
+\chapter*{Test chapter}
+
+\addcontentsline{toc}{section}{Test section}
+\section*{Test section}
+
+\subsection*{Test subsection}
+\subsubsection*{Test subsubsection}
+%\paragraph*{Test paragraph}
+
+%\Blinddocument
+
+\end{multicols*}
+\end{document}
