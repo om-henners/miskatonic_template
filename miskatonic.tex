@@ -7,13 +7,14 @@
 \usepackage{blindtext}
 \usepackage{fancyhdr}
 \usepackage{fontspec}
-\usepackage{geometry}
+\usepackage]{geometry}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 %\usepackage[document]{ragged2e}
 \usepackage{titling}
 \usepackage{titlesec}
+%\usepackage{tocloft}
 \usepackage{xcolor}
 
 %
@@ -22,7 +23,7 @@
 \geometry{a4paper}
 
 %
-% make the colours required for the document
+% make the colours and fonts required for the document
 %
 \definecolor{headingColour}{HTML}{72000D}
 \definecolor{highlightTextColour}{HTML}{452E0F}
@@ -32,28 +33,33 @@
 \setsansfont{Aller}
 \setmainfont{Libre Baskerville}
 
-\titleformat{\chapter}%
-    {\fontsize{24pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\MakeUppercase}%
-    {\thechapter}%
-    {0em}%
-    {}
-\titleformat{\section}%
-    {\fontsize{14pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\MakeUppercase}%
-    {\thesection}%
+%
+% table of contents
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\chapter}[display]%
+    {\fontsize{24pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\raggedright}%
+    {}%
+    {0pt}%
+    {\MakeUppercase}
+\titleformat{\section}[display]%
+    {\fontsize{14pt}{0pt}\selectfont\bfseries\sffamily\color{headingColour}\raggedright}%
+    {}%
+    {0pt}%
+    {\MakeUppercase}
+\titleformat{\subsection}[display]%
+    {\fontsize{11pt}{0pt}\selectfont\bfseries\color{headingColour}\raggedright}%
+    {}%
     {0pt}%
     {}
-\titleformat{\subsection}%
-    {\fontsize{11pt}{0pt}\selectfont\bfseries\color{headingColour}}%
-    {\thesubsection}%
-    {0pt}%
-    {}
-\titleformat{\subsubsection}%
-    {\normalsize\bfseries\slshape\color{headingColour}}%
-    {\thesubsubsection}%
+\titleformat{\subsubsection}[display]%
+    {\fontsize{9pt}{0pt}\selectfont\slshape\bfseries\color{headingColour}\raggedright}%
+    {}%
     {0pt}%
     {}
 
-\setcounter{tocdepth}{2}
+
 
 %
 % Document details
@@ -114,20 +120,27 @@ The \emph{Miskatonic Repository Logo} is used under license.
 \pagestyle{fancy}
 
 \begin{multicols*}{2}
+\renewcommand*\contentsname{Table of Contents}
 \tableofcontents
 
 \mainmatter
-\addcontentsline{toc}{chapter}{Test chapter}
-\chapter*{Test chapter}
+\chapter{Test chapter which should break lines}
 
-\addcontentsline{toc}{section}{Test section}
-\section*{Test section}
+\blindtext
 
-\subsection*{Test subsection}
-\subsubsection*{Test subsubsection}
-%\paragraph*{Test paragraph}
+\section{Test section with a very very, extremely long, title}
 
-%\Blinddocument
+\blindtext
+
+\subsection{Test subsection}
+
+\blindtext
+
+\subsubsection{Test subsubsection}
+
+\blindtext
+
+\Blinddocument
 
 \end{multicols*}
 \end{document}
