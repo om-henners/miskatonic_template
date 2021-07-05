@@ -1,3 +1,4 @@
+
 \documentclass[9pt]{extbook}
 
 %
@@ -5,9 +6,10 @@
 %
 \usepackage[english]{babel}
 \usepackage{blindtext}
+\usepackage{etoolbox}
 \usepackage{fancyhdr}
 \usepackage{fontspec}
-\usepackage{geometry}
+\usepackage[margin=13mm,includehead,includefoot]{geometry}
 \usepackage{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
@@ -21,7 +23,7 @@
 % Then setup all the document parameters
 %
 \geometry{a4paper}
-
+\setlength{\columnsep}{13mm}
 %
 % make the colours and fonts required for the document
 %
@@ -94,18 +96,7 @@ The \emph{Miskatonic Repository Logo} is used under license.
 \g@addto@macro{\maketitle}{\secondpage}
 \makeatother
 
-%
-% Set up page headers
-% 
-
-\fancyhead{}
-\fancyhead[LE,RO]{\thetitle}
-\fancyhead[RE,LO]{}
-\fancyfoot{}
-\fancyfoot[LE,RO]{}
-\fancyfoot[RE,LO]{}
-
-
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
 %%% BEGIN DOCUMENT
 \begin{document}
@@ -118,6 +109,10 @@ The \emph{Miskatonic Repository Logo} is used under license.
 
 
 \pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE,RO]{\thetitle}
+\fancyfoot[C]{\thepage}
+
 
 \begin{multicols*}{2}
 \renewcommand*\contentsname{Table of Contents}
