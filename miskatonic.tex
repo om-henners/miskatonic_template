@@ -9,8 +9,9 @@
 \usepackage{etoolbox}
 \usepackage{fancyhdr}
 \usepackage{fontspec}
-\usepackage[margin=13mm,includehead,includefoot]{geometry}
-\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage[linktopage=true]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 %\usepackage[document]{ragged2e}
@@ -20,11 +21,6 @@
 \usepackage{xcolor}
 
 %
-% Then setup all the document parameters
-%
-\geometry{a4paper}
-\setlength{\columnsep}{13mm}
-%
 % make the colours and fonts required for the document
 %
 \definecolor{headingColour}{HTML}{72000D}
@@ -32,8 +28,8 @@
 \definecolor{highlightBackgroundColour}{HTML}{EEECE1}
 
 \defaultfontfeatures{Ligatures=TeX}
-\setsansfont{Aller}
-\setmainfont{Libre Baskerville}
+\setsansfont{Trebuchet MS}
+\setmainfont{Georgia}
 
 %
 % table of contents
@@ -64,20 +60,34 @@
 
 
 %
+% Then setup all the document parameters
+%
+\geometry{a4paper,margin=13mm,includehead,includefoot}
+\setlength{\columnsep}{13mm}
+
+
+
+%
 % Document details
 %
 \title{Dummy book}
 \author{Henry Walshaw}
 % \thanks{}
 % \date{} % delete this line to display the current date
-
+\graphicspath{{../images}{./}}
 
 %
 % Copyright page
 %
-\def\secondpage{\clearpage\null\vfill
-\pagestyle{empty}
-\begin{minipage}[b]{0.9\textwidth}
+\def\secondpage{
+\clearpage
+\null
+\begin{center}
+\includegraphics{miskatonic_repository}
+\end{center}
+\vfill
+\pagestyle{plain}
+\begin{minipage}[b]{\textwidth}
 \begin{center}
 \setlength{\parskip}{0.5\baselineskip}
 \emph{Call of Cthulhu} is a Trademark of Chaosium Inc. and is used with their permission via the OBS Community Content program. For more information please visit Chaosium's website: \href{https://www.chaosium.com}{www.chaosium.com}
@@ -98,7 +108,11 @@ The \emph{Miskatonic Repository Logo} is used under license.
 
 \patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
 
-%%% BEGIN DOCUMENT
+%
+%
+%% BEGIN DOCUMENT
+%
+%
 \begin{document}
 
 \frontmatter
