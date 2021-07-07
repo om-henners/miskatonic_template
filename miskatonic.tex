@@ -11,13 +11,14 @@
 \usepackage{fontspec}
 \usepackage{geometry}
 \usepackage{graphicx}
-\usepackage[linktopage=true]{hyperref}
+\usepackage[linktocpage=true,pdfpagemode=useOutlines]{hyperref}
 \usepackage[utf8]{inputenc}
 \usepackage{multicol}
 %\usepackage[document]{ragged2e}
 \usepackage{titling}
 \usepackage{titlesec}
 %\usepackage{tocloft}
+\usepackage{titletoc}
 \usepackage{xcolor}
 
 %
@@ -72,6 +73,7 @@
 %
 \title{Dummy book}
 \author{Henry Walshaw}
+\hypersetup{pdftitle=\thetitle}
 % \thanks{}
 % \date{} % delete this line to display the current date
 \graphicspath{{../images}{./}}
