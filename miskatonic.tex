@@ -21,6 +21,10 @@
 \usepackage{titletoc}
 \usepackage{xcolor}
 
+% pandoc
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
 %
 % make the colours and fonts required for the document
 %
@@ -73,8 +77,23 @@
 %
 % Document details
 %
-\title{Dummy book}
-\author{Henry Walshaw}
+$if(title)$
+\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+$endif$
+$if(subtitle)$
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{$subtitle$}
+$endif$
+\author{$for(author)$$author$$sep$ \and $endfor$}
+$if(date)$
+\date{$date$}
+$endif$
+
 \hypersetup{pdftitle=\thetitle}
 % \thanks{}
 % \date{} % delete this line to display the current date
@@ -121,14 +140,17 @@ The \emph{Miskatonic Repository Logo} is used under license.
 
 \frontmatter
 
+$if(title)$
 \begin{titlepage}
 \maketitle
 \end{titlepage}
-
+$endif$
 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LE,RO]{The book title}
+$if(title)$
+\fancyhead[LE,RO]{$title$}
+$endif$
 \fancyfoot[C]{\thepage}
 
 
@@ -137,29 +159,18 @@ The \emph{Miskatonic Repository Logo} is used under license.
 \tableofcontents
 
 \mainmatter
-\chapter{Test chapter which should break lines}
 
-\blindtext
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
 
-\section{Test section with a very very, extremely long, title}
+$body$
 
-\blindtext
-
-\subsection{Test subsection}
-
-\blindtext
-
-\subsubsection{Test subsubsection}
-
-\blindtext
-
-\begin{mdframed}
-\blindtext
-\end{mdframed}
-
-\Blindtext
-
-\Blinddocument
+% \begin{mdframed}
+% \blindtext
+% \end{mdframed}
 
 \end{multicols*}
 \end{document}
